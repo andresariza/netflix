@@ -1,3 +1,5 @@
+Andres Alberto Ariza Mantilla
+
 # 🎬 NetflixBasicNavigation
 
 > Repositorio educativo diseñado para la enseñanza de la navegación en aplicaciones Android modernas utilizando **Jetpack Compose Navigation**.
