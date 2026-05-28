@@ -27,13 +27,12 @@ import me.fabiansuarez.compose.lab.netflixbasicnavigation.data.models.NetflixPla
 import me.fabiansuarez.compose.lab.netflixbasicnavigation.data.netflixPlans
 import me.fabiansuarez.compose.lab.netflixbasicnavigation.ui.theme.*
 
-@Preview(
-    name = "Netflix Register Step 2 - Elige tu plan",
-    showBackground = true,
-    showSystemUi = true
-)
+
 @Composable
-fun RegisterStep2Screen() {
+fun RegisterStep2Screen(
+    onClickBack: ()-> Unit,
+    onClickNext: ()-> Unit
+) {
     val scrollState = rememberScrollState()
     var selectedPlan by remember { mutableStateOf(3) } // Premium selected by default
 
@@ -50,7 +49,7 @@ fun RegisterStep2Screen() {
 
             // ── Top Bar ──────────────────────────────────────────────────────
             RegisterTopBar(
-                onBackClick = {},
+                onBackClick = {onClickBack()},
                 step = 2,
                 totalSteps = 3
             )
@@ -108,7 +107,7 @@ fun RegisterStep2Screen() {
 
                 // ── Continue button ──────────────────────────────────────────
                 Button(
-                    onClick = { },
+                    onClick = { onClickNext() },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(52.dp),

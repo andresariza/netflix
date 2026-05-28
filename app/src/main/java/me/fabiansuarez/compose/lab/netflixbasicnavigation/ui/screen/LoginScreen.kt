@@ -1,6 +1,7 @@
 package me.fabiansuarez.compose.lab.netflixbasicnavigation.ui.screen
 
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -27,17 +28,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import me.fabiansuarez.compose.lab.netflixbasicnavigation.ui.theme.*
 
 
 // ─── LoginScreen ─────────────────────────────────────────────────────────────
-@Preview(
-    name = "Netflix Login Screen",
-    showBackground = true,
-    showSystemUi = true
-)
+
 @Composable
-fun LoginScreen() {
+fun LoginScreen(
+    onClickSuscribe: ()-> Unit
+) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -245,7 +245,10 @@ fun LoginScreen() {
                         color = NetflixWhite,
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Medium,
-                        modifier = Modifier.clickable { }
+                        modifier = Modifier.clickable {
+                            Log.i("mi-bug","estoy logueando")
+                            onClickSuscribe()
+                        }
                     )
                 }
             }

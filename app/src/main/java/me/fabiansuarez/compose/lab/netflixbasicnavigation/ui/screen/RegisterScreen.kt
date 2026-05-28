@@ -1,6 +1,7 @@
 package me.fabiansuarez.compose.lab.netflixbasicnavigation.ui.screen
 
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -26,14 +27,12 @@ import androidx.compose.ui.unit.sp
 import me.fabiansuarez.compose.lab.netflixbasicnavigation.ui.theme.*
 
 // ─── RegisterScreen ───────────────────────────────────────────────────────────
-@Preview(
-    name = "Netflix Register Screen",
-    showBackground = true,
-    showSystemUi = true
-)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(
+    onClickBack: ()-> Unit,
+    onClickNext: ()-> Unit
+) {
     val scrollState = rememberScrollState()
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -64,7 +63,10 @@ fun RegisterScreen() {
             ) {
                 // Back arrow
                 IconButton(
-                    onClick = {},
+                    onClick = {
+                        Log.i("milog-a", "back")
+                        onClickBack()
+                              },
                     modifier = Modifier.align(Alignment.CenterStart)
                 ) {
                     Icon(
@@ -202,7 +204,7 @@ fun RegisterScreen() {
 
                 // ── Continue button ──────────────────────────────────────────
                 Button(
-                    onClick = { },
+                    onClick = {onClickNext() },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(52.dp),
